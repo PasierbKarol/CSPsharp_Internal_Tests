@@ -17,18 +17,16 @@
 //                                                                  //
 //////////////////////////////////////////////////////////////////////
 
-
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using CSPlang;
-using CSPutil;
-
 /**
  * @author P.H. Welch
  */
-namespace CommsTimeTesting 
+
+using System;
+using System.IO;
+using System.Text;
+using CSPlang;
+
+namespace CommsTimeTesting
 {
     public class Consume : IamCSProcess
     {
@@ -43,7 +41,6 @@ namespace CommsTimeTesting
 
         public void run()
         {
-
             long x = -1;
             int warm_up = 1000;
             Console.WriteLine("warming up ... ");
@@ -51,6 +48,7 @@ namespace CommsTimeTesting
             {
                 x = (long) In.read();
             }
+
             Console.WriteLine("last number received = " + x);
 
             Console.WriteLine("1000 cycles completed ... timing now starting ...");
@@ -65,29 +63,30 @@ namespace CommsTimeTesting
                 {
                     x = (long) In.read();
                 }
+
                 long t1 = CSTimer.CurrentTimeMillis();
 
                 Console.WriteLine("last number received = " + x);
                 long microseconds = (t1 - t0) * 1000;
-                long iterations = (microseconds / ((long)nLoops));
+                long iterations = (microseconds / ((long) nLoops));
                 string first = " microseconds / iteration";
                 Console.WriteLine(iterations + first);
-                long communication = (microseconds / ((long)(4 * nLoops)));
+                long communication = (microseconds / ((long) (4 * nLoops)));
                 string second = " microseconds / communication";
                 Console.WriteLine(communication + second);
-                long contextSwitch = (microseconds / ((long)(8 * nLoops)));
+                long contextSwitch = (microseconds / ((long) (8 * nLoops)));
                 string third = " microseconds / context switch";
                 Console.WriteLine(contextSwitch + third);
-                var newLine = string.Format("{0},{1},{2},{3},{4},{5}", iterations, first, communication, second, contextSwitch, third);
+                var newLine = string.Format("{0},{1},{2},{3},{4},{5}", iterations, first, communication, second,
+                    contextSwitch, third);
                 csv.AppendLine(newLine);
 
 
                 repeatTimes--;
             }
+
             File.WriteAllText(@"d:\\networkedCommsTimeTEST.csv", csv.ToString());
             Console.WriteLine("Finished");
         }
     }
 }
-
-

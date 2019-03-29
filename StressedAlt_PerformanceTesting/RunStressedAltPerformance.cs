@@ -18,22 +18,20 @@
 //                                                                  //
 //////////////////////////////////////////////////////////////////////
 /// 
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using CSPlang;
-using CSPlang.Any2;
+
 
 /**
  * @author P.H. Welch
  */
+
+using System;
+using CSPlang;
+using CSPlang.Any2;
+
 namespace StressedAlt_PerformanceTesting
 {
-
     public class RunStressedAltPerformance
     {
-
         public static void Main(String[] args)
         {
             int nChannels = 2;
@@ -49,30 +47,28 @@ namespace StressedAlt_PerformanceTesting
             {
                 for (int i = 0; i < nWritersPerChannel; i++)
                 {
-                    writers[(channel * nWritersPerChannel) + i] = new StressedWriterPerformance(any2OneChannelsNumber[channel].Out(), channel, i, writerID);
+                    writers[(channel * nWritersPerChannel) + i] =
+                        new StressedWriterPerformance(any2OneChannelsNumber[channel].Out(), channel, i, writerID);
                     writerID++;
                 }
             }
 
-            Console.WriteLine("TEST: " + nChannels + " Channels, " + nWritersPerChannel + " Writers, " + nMessages + " messages");
+            Console.WriteLine("TEST: " + nChannels + " Channels, " + nWritersPerChannel + " Writers, " + nMessages +
+                              " messages");
             for (int i = 0; i < 10; i++)
             {
                 new CSPParallel(
-                    new IamCSProcess[] {
-                        new CSPParallel (writers),
-                        new StressedReaderPerformance(Channel.getInputArray(any2OneChannelsNumber),nMessages, nChannels, nWritersPerChannel)
+                    new IamCSProcess[]
+                    {
+                        new CSPParallel(writers),
+                        new StressedReaderPerformance(Channel.getInputArray(any2OneChannelsNumber), nMessages,
+                            nChannels, nWritersPerChannel)
                     }
                 ).run();
             }
+
             Console.WriteLine("Finished all");
             Console.ReadKey();
-
-
-
-
         }
     }
 }
-
-
-

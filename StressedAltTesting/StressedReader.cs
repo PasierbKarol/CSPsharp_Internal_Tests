@@ -18,15 +18,15 @@
 //                                                                  //
 //////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-using CSPlang;
 
 /**
  * @author P.H. Welch
  */
+
+using System;
+using System.Diagnostics;
+using CSPlang;
+
 namespace TestingUtilities
 {
     public class StressedReader : IamCSProcess

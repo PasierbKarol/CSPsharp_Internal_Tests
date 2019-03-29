@@ -1,7 +1,7 @@
 // copyright 2012-13 Jon Kerridge
 // Let's Do It In Parallel
 
-using System;
+
 using CSPlang;
 using PlugAndPlay;
 
@@ -20,6 +20,7 @@ namespace RunPhilosophersForNetworking
             this.deliver = deliver;
             this.philosopherId = philosopherId;
         }
+
         public void run()
         {
             One2OneChannel console = Channel.one2one();

@@ -4,7 +4,6 @@ using CSPnet2.NetChannels;
 using CSPnet2.NetNode;
 using CSPnet2.TCPIP;
 using PlugAndPlay;
-using PlugAndPlay.Ints;
 
 namespace NetworkedCommsTime___RunNumbers
 {
@@ -18,7 +17,7 @@ namespace NetworkedCommsTime___RunNumbers
             var numbersNodeIP = Console.ReadLine();
             Console.WriteLine("Please enter IP address for Consume.");
             var consumeNodeIP = Console.ReadLine();
-            
+
 
             var numbersNodeAddr = new TCPIPNodeAddress(numbersNodeIP, 3000);
             Node.getInstance().init(numbersNodeAddr);
@@ -38,10 +37,11 @@ namespace NetworkedCommsTime___RunNumbers
             One2OneChannel S2P = Channel.one2one();
 
             new CSPParallel(
-                new IamCSProcess[] {
-                    new Prefix (0, S2P.In(), P2D.Out()),
-                    new Delta2 (P2D.In(),numbers2network, D2S.Out()),
-                    new Successor (D2S.In(), S2P.Out()),
+                new IamCSProcess[]
+                {
+                    new Prefix(0, S2P.In(), P2D.Out()),
+                    new Delta2(P2D.In(), numbers2network, D2S.Out()),
+                    new Successor(D2S.In(), S2P.Out()),
                 }
             ).run();
         }

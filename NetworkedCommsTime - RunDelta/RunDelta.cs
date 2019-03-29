@@ -32,7 +32,6 @@ namespace NetworkedCommsTime___RunDelta
             var prefixNodeAddr = new TCPIPNodeAddress(prefixNodeIP, 3000);
             var delta2prefix = NetChannel.one2net(prefixNodeAddr, 50);
             delta2prefix.write(0); //notify prefix delta is ready
-           
 
 
             var consumeNodeAddr = new TCPIPNodeAddress(consumeNodeIP, 3300);
@@ -44,7 +43,7 @@ namespace NetworkedCommsTime___RunDelta
 
             //Please start successor process now
             Console.WriteLine("Please start successor process now");
-            prefix2delta.read();//when the signal from prefix comes back it means successor is already running
+            prefix2delta.read(); //when the signal from prefix comes back it means successor is already running
 
             var successorNodeAddr = new TCPIPNodeAddress(successorNodeIP, 3000);
             var delta2successor = NetChannel.one2net(successorNodeAddr, 50);
@@ -56,8 +55,10 @@ namespace NetworkedCommsTime___RunDelta
 
 
             new CSPParallel(
-                new IamCSProcess[] {
-                    new Delta2 (prefix2delta ,delta2consume, delta2successor)                }
+                new IamCSProcess[]
+                {
+                    new Delta2(prefix2delta, delta2consume, delta2successor)
+                }
             ).run();
         }
     }

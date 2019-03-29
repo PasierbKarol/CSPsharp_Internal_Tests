@@ -41,8 +41,9 @@ namespace NetworkedCommsTime___RunPrefix
             Console.WriteLine("\nNetwork is good to run. Please refer to Consume process window");
 
             new CSPParallel(
-                new IamCSProcess[] {
-                    new Prefix (0, successor2prefix, prefix2delta)                    
+                new IamCSProcess[]
+                {
+                    new Prefix(0, successor2prefix, prefix2delta)
                 }
             ).run();
         }

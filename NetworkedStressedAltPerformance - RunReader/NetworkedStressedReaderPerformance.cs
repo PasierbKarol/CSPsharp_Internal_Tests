@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using CSPlang;
 using CSPlang.Alting;
 using CSPnet2;
-using CSPutil;
 using TestingUtilities;
 
 namespace NetworkedStressedAltPerformance___RunReader
@@ -17,7 +15,8 @@ namespace NetworkedStressedAltPerformance___RunReader
         private readonly int nChannels;
         private readonly int nMessages;
 
-        public NetworkedStressedReaderPerformance(NetAltingChannelInput[] c, int nMessages, int nChannels, int nWritersPerChannel)
+        public NetworkedStressedReaderPerformance(NetAltingChannelInput[] c, int nMessages, int nChannels,
+            int nWritersPerChannel)
         {
             this.c = c;
             this.nMessages = nMessages;
@@ -51,26 +50,26 @@ namespace NetworkedStressedAltPerformance___RunReader
             Console.WriteLine("Waiting is over. Measuring time");
 
 
-
-
             //perform read and measure the time
             t0 = CSTimer.CurrentTimeMillis();
             for (int i = 0; i < iterations; i++)
             {
                 channelFairSelect = alt.fairSelect();
-                stressedPacket = (StressedPacket)c[channelFairSelect].read();
+                stressedPacket = (StressedPacket) c[channelFairSelect].read();
                 n[channelFairSelect][stressedPacket.writer] = stressedPacket.n;
             }
+
             t1 = CSTimer.CurrentTimeMillis();
             microseconds = (t1 - t0) * 1000;
             if (microseconds > 0)
             {
                 Console.WriteLine("Reading time for " + iterations + " iterations: " + microseconds);
-                var newLine = string.Format("{0},{1},{2},{3},{4}", nChannels, nWritersPerChannel, nMessages, iterations, microseconds);
+                var newLine = string.Format("{0},{1},{2},{3},{4}", nChannels, nWritersPerChannel, nMessages, iterations,
+                    microseconds);
                 csv.AppendLine(newLine);
-                File.AppendAllText(@"d:\\NetworkedstressedAlt_Test" + nChannels + "x" + nWritersPerChannel + ".csv", csv.ToString());
+                File.AppendAllText(@"d:\\NetworkedstressedAlt_Test" + nChannels + "x" + nWritersPerChannel + ".csv",
+                    csv.ToString());
             }
         }
     }
-
 }

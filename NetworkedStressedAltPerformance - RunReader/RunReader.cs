@@ -1,11 +1,9 @@
 ﻿using System;
 using CSPlang;
-using CSPlang.Any2;
 using CSPnet2;
 using CSPnet2.NetChannels;
 using CSPnet2.NetNode;
 using CSPnet2.TCPIP;
-using StressedAlt_PerformanceTesting;
 
 namespace NetworkedStressedAltPerformance___RunReader
 {
@@ -34,19 +32,21 @@ namespace NetworkedStressedAltPerformance___RunReader
                 network2Reader[i] = NetChannel.net2one();
                 Console.WriteLine("network2Reader location = " + network2Reader[i].getLocation().ToString());
             }
-            
+
             string[] writersNodesIPs = new string[nChannels];
             Console.WriteLine("Wait for writers to confirm they are ready and send their IPs");
             for (int i = 0; i < nChannels; i++)
             {
-                writersNodesIPs[i] =(string) network2Reader[i].read();
+                writersNodesIPs[i] = (string) network2Reader[i].read();
             }
 
             NetChannelOutput[] reader2allWriters = new NetChannelOutput[nChannels];
             for (int i = 0; i < writersNodesIPs.Length; i++)
             {
                 var writersChannelNodeAddress = new TCPIPNodeAddress(writersNodesIPs[i], 3300);
-                reader2allWriters[i] = NetChannel.one2net(writersChannelNodeAddress, 50 ); //It's going to be always first read channel in the writer
+                reader2allWriters[i] =
+                    NetChannel.one2net(writersChannelNodeAddress,
+                        50); //It's going to be always first read channel in the writer
             }
 
             Console.WriteLine("Writing to channels to notify them they are ready to start");
@@ -54,6 +54,7 @@ namespace NetworkedStressedAltPerformance___RunReader
             {
                 reader2allWriters[i].write(0);
             }
+
             Console.WriteLine("Sent signal to Writers");
 
 
@@ -61,11 +62,13 @@ namespace NetworkedStressedAltPerformance___RunReader
             for (int i = 0; i < 100; i++)
             {
                 new CSPParallel(
-                    new IamCSProcess[] {
-                        new NetworkedStressedReaderPerformance(network2Reader,nMessages, nChannels, nWritersPerChannel)
+                    new IamCSProcess[]
+                    {
+                        new NetworkedStressedReaderPerformance(network2Reader, nMessages, nChannels, nWritersPerChannel)
                     }
                 ).run();
             }
+
             Console.WriteLine("Finished all");
             Console.ReadKey();
         }

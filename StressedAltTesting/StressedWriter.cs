@@ -18,17 +18,17 @@
 //                                                                  //
 //////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-using CSPlang;
 
 /**
  * @author P.H. Welch
  */
+
+using System;
+using CSPlang;
+
 namespace TestingUtilities
 {
-    public class StressedWriter: IamCSProcess
+    public class StressedWriter : IamCSProcess
     {
         private readonly ChannelOutput Out;
         private readonly int channel;
@@ -53,17 +53,14 @@ namespace TestingUtilities
                 // for (int i = 0; i < writer; i++) System.out.print ("  ");
                 // System.out.println (id + " " + n);
                 stressedPacketA.n = n;
-                    Out.write(stressedPacketA);
+                Out.write(stressedPacketA);
                 n++;
                 // for (int i = 0; i < writer; i++) System.out.print ("  ");
                 // System.out.println (id + " " + n);
                 stressedPacketB.n = n;
-                    Out.write(stressedPacketB);
+                Out.write(stressedPacketB);
                 n++;
             }
         }
     }
 }
-
-
-

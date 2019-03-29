@@ -6,7 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CSPlang\CSPlang.csproj" />
+    <Reference Include="CSPlang">
+      <HintPath>..\CSPlang.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

@@ -1,11 +1,6 @@
-using System;
 using CSPlang;
 using CSPlang.Any2;
-using CSPnet2.NetChannels;
-using CSPnet2.NetNode;
-using CSPnet2.TCPIP;
 using PlugAndPlay;
-
 
 namespace NetworkedDiningPhilosophers
 {

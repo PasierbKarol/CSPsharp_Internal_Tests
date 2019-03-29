@@ -18,22 +18,22 @@
 //                                                                  //
 //////////////////////////////////////////////////////////////////////
 /// 
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using CSPlang;
-using CSPlang.Any2;
+
 
 /**
  * @author P.H. Welch
  */
+
+using System;
+using CSPlang;
+using CSPlang.Any2;
+
 namespace TestingUtilities
 {
-
     class StressedAlt
     {
         public static String TITLE = "Stressed Alt";
+
         public static String DESCR =
             "Shows the fairness of an Alt at a high level of stress from the writing channels. Many writers " +
             "will be writing to each of the channels (each is an Any-One channel) with no delay between writes. " +
@@ -58,20 +58,18 @@ namespace TestingUtilities
             {
                 for (int i = 0; i < nWritersPerChannel; i++)
                 {
-                    writers[(channel * nWritersPerChannel) + i] = new StressedWriter(any2OneChannelsNumber[channel].Out(), channel, i);
+                    writers[(channel * nWritersPerChannel) + i] =
+                        new StressedWriter(any2OneChannelsNumber[channel].Out(), channel, i);
                 }
             }
 
             new CSPParallel(
-                new IamCSProcess[] {
-                    new CSPParallel (writers),
-                    new StressedReader (Channel.getInputArray(any2OneChannelsNumber), nWritersPerChannel)
+                new IamCSProcess[]
+                {
+                    new CSPParallel(writers),
+                    new StressedReader(Channel.getInputArray(any2OneChannelsNumber), nWritersPerChannel)
                 }
             ).run();
-
         }
     }
 }
-
-
-

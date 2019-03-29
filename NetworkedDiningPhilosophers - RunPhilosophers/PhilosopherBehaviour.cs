@@ -1,7 +1,7 @@
 // copyright 2012-13 Jon Kerridge
 // Let's Do It In Parallel
 
-using System;
+
 using CSPlang;
 
 namespace RunPhilosophersForNetworking
@@ -19,7 +19,6 @@ namespace RunPhilosophersForNetworking
             this.deliver = deliver;
             this.toConsole = toConsole;
             this.id = id;
-
         }
 
         public void run()
@@ -41,7 +40,7 @@ namespace RunPhilosophersForNetworking
 
                 toConsole.write("Need a chicken ...\n");
                 service.write(id);
-                long gotOne = (int)(long) deliver.read();
+                long gotOne = (int) (long) deliver.read();
                 if (gotOne > 0)
                 {
                     toConsole.write("Eating ... \n");

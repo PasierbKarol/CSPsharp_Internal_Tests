@@ -1,10 +1,9 @@
 // copyright 2012-13 Jon Kerridge
 // Let's Do It In Parallel
 
+
 using System;
 using CSPlang;
-using CSPnet2;
-using CSPnet2.NetChannels;
 
 namespace NetworkedDiningPhilosophers
 {
@@ -26,7 +25,7 @@ namespace NetworkedDiningPhilosophers
         public void run()
         {
             Guard[] canteenGuards = {supply as Guard, service as Guard};
-            Boolean[] precondition ={true, false};
+            Boolean[] precondition = {true, false};
             var canteenAlt = new Alternative(canteenGuards);
 
             const int SUPPLY = 0;
@@ -48,7 +47,7 @@ namespace NetworkedDiningPhilosophers
                 switch (canteenAlt.fairSelect(precondition))
                 {
                     case SUPPLY:
-                        int value =(int)(long) supply.read();
+                        int value = (int) (long) supply.read();
                         toConsole.write("Chickens on the way ...\n");
                         tim.after(tim.read() + 3000);
                         chickens = chickens + value;
@@ -56,14 +55,14 @@ namespace NetworkedDiningPhilosophers
                         supply.read();
                         break;
                     case SERVICE:
-                        int id =(int)(long) service.read();
+                        int id = (int) (long) service.read();
                         chickens = chickens - 1;
-                        toConsole.write("chicken ready for Philosoper " + id + " ... " + chickens + " chickens left \n");
+                        toConsole.write("chicken ready for Philosoper " + id + " ... " + chickens +
+                                        " chickens left \n");
                         deliver.write(1);
                         break;
                 }
             }
         }
-
     }
 }

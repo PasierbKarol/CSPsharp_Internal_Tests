@@ -4,7 +4,6 @@ using CSPnet2.NetChannels;
 using CSPnet2.NetNode;
 using CSPnet2.TCPIP;
 
-
 namespace NetworkedDiningPhilosophers
 {
     class RunCanteen

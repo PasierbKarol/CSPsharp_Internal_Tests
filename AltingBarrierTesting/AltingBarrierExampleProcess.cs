@@ -25,10 +25,8 @@ using CSPlang;
 
 namespace AltingBarrierTesting
 {
-
     public class AltingBarrierExampleProcess : IamCSProcess
     {
-
         private readonly AltingChannelInput input;
         private readonly AltingBarrier barrier;
         private readonly ChannelOutput output;
@@ -51,24 +49,25 @@ namespace AltingBarrierTesting
             CSTimer timer = new CSTimer();
             Random rnd = new Random();
             int randomTimeout = rnd.Next(1, 10) * 500;
-            Alternative barrierGroupAlt = new Alternative(new Guard[] { input, barrier});
+            Alternative barrierGroupAlt = new Alternative(new Guard[] {input, barrier});
 
             const int INPUT = 0, GROUP = 1, TIMER = 2;
 
             output.write(n.ToString());
 
-            
+
             while (true)
             {
                 bool pending = input.pending();
                 while (!pending)
                 {
-                    Debug.WriteLine((char)num + " pending = " + pending);
+                    Debug.WriteLine((char) num + " pending = " + pending);
 
                     n++;
-                    output.write((char)num + " " + n.ToString()); // work with the barrier
+                    output.write((char) num + " " + n.ToString()); // work with the barrier
                     pending = input.pending();
                 }
+
                 input.read(); // must consume the input
                 output.write("Read click " + n.ToString()); // work with the barrier
 
@@ -78,7 +77,7 @@ namespace AltingBarrierTesting
                     switch (barrierGroupAlt.priSelect())
                     {
                         case INPUT:
-                            Debug.WriteLine((char)num + "barier input");
+                            Debug.WriteLine((char) num + "barier input");
                             string x = input.read().ToString(); // must consume the input
                             Console.WriteLine(x);
                             group = false; // end barrier working
@@ -86,14 +85,11 @@ namespace AltingBarrierTesting
                         case GROUP:
                             n--; // work with the barrier
                             output.write(n.ToString()); // work with the barrier
-                            Debug.WriteLine((char)num + "barier wrote " + n);
-                            break;                       
+                            Debug.WriteLine((char) num + "barier wrote " + n);
+                            break;
                     }
                 }
-
             }
-
         }
-
     }
 }

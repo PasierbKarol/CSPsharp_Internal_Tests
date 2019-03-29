@@ -30,7 +30,7 @@ namespace AltingBarrierTesting
             int nUnits = 8;
 
             Console.WriteLine("Enter number of units: ");
-            nUnits =  Int32.Parse(Console.ReadLine());
+            nUnits = Int32.Parse(Console.ReadLine());
 
             // make the buttons
 
@@ -40,7 +40,7 @@ namespace AltingBarrierTesting
 
             ProcessesArray processesArray =
                 new ProcessesArray(
-                     nUnits, Channel.getInputArray(b),
+                    nUnits, Channel.getInputArray(b),
                     Channel.getOutputArray(a)
                 );
 
@@ -52,7 +52,7 @@ namespace AltingBarrierTesting
             AltingBarrierExampleProcess[] barriers = new AltingBarrierExampleProcess[nUnits];
             for (int i = 0; i < barriers.Length; i++)
             {
-                barriers[i] = new AltingBarrierExampleProcess(a[i].In(), group[i], b[i].Out(), i+65);
+                barriers[i] = new AltingBarrierExampleProcess(a[i].In(), group[i], b[i].Out(), i + 65);
             }
 
             // run everything

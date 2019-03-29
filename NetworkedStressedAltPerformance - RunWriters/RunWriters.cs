@@ -1,6 +1,5 @@
 ﻿using System;
 using CSPlang;
-using CSPnet2;
 using CSPnet2.NetChannels;
 using CSPnet2.NetNode;
 using CSPnet2.TCPIP;
@@ -35,7 +34,7 @@ namespace NetworkedStressedAltPerformance___RunWriters
             Node.getInstance().init(writersChannelNodesAddresses);
 
             var readersChannelNumberForThisWriter = Int32.Parse("5" + (writerID - 1));
-            var writers2network = NetChannel.any2net(readerNodeAddr, readersChannelNumberForThisWriter );
+            var writers2network = NetChannel.any2net(readerNodeAddr, readersChannelNumberForThisWriter);
 
             Console.WriteLine("writers2network location = " + writers2network.getLocation().ToString());
 
@@ -47,7 +46,7 @@ namespace NetworkedStressedAltPerformance___RunWriters
             timer.sleep(2000);
             Console.WriteLine("Waiting for the signal from Reader...");
             fromReader.read();
-            
+
             Console.WriteLine("Read signal from Reader");
 
             //====================== Running the test
@@ -57,7 +56,8 @@ namespace NetworkedStressedAltPerformance___RunWriters
             {
                 for (int i = 0; i < nWritersPerChannel; i++)
                 {
-                    writers[(channel * nWritersPerChannel) + i] = new StressedWriterPerformance(writers2network, channel, i, writerID);
+                    writers[(channel * nWritersPerChannel) + i] =
+                        new StressedWriterPerformance(writers2network, channel, i, writerID);
                     writerID++;
                 }
             }
@@ -65,13 +65,14 @@ namespace NetworkedStressedAltPerformance___RunWriters
             for (int i = 0; i < 100; i++)
             {
                 new CSPParallel(
-                    new IamCSProcess[] {
-                        new CSPParallel (writers),                        
+                    new IamCSProcess[]
+                    {
+                        new CSPParallel(writers),
                     }
                 ).run();
             }
-            Console.WriteLine("Finished all");
 
+            Console.WriteLine("Finished all");
         }
     }
 }

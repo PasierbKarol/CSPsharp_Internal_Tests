@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSPsharp_Internal_Tests", "CSPsharp_Internal_Tests\CSPsharp_Internal_Tests.csproj", "{7E7801FA-E44E-4C49-A76B-243EA0D11672}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommsTimeSymetricTesting", "CommsTimeSymetricTesting\CommsTimeSymetricTesting.csproj", "{B1E5E35D-344E-4CD4-97DC-98E11FC32983}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommsTimeTesting", "CommsTimeTesting\CommsTimeTesting.csproj", "{35149A0D-F6DA-4B03-A4F1-670F90DB0824}"
@@ -33,16 +31,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StressedAlt_PerformanceTest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StressedAltTesting", "StressedAltTesting\StressedAltTesting.csproj", "{956A3B96-E7DB-4934-8AD1-97B8B03F67E4}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AltingBarrierTesting", "AltingBarrierTesting\AltingBarrierTesting.csproj", "{DC465A96-DAF9-4D0D-B080-9D5356B8A13D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7E7801FA-E44E-4C49-A76B-243EA0D11672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7E7801FA-E44E-4C49-A76B-243EA0D11672}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7E7801FA-E44E-4C49-A76B-243EA0D11672}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7E7801FA-E44E-4C49-A76B-243EA0D11672}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B1E5E35D-344E-4CD4-97DC-98E11FC32983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B1E5E35D-344E-4CD4-97DC-98E11FC32983}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1E5E35D-344E-4CD4-97DC-98E11FC32983}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -99,6 +95,10 @@ Global
 		{956A3B96-E7DB-4934-8AD1-97B8B03F67E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{956A3B96-E7DB-4934-8AD1-97B8B03F67E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{956A3B96-E7DB-4934-8AD1-97B8B03F67E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC465A96-DAF9-4D0D-B080-9D5356B8A13D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC465A96-DAF9-4D0D-B080-9D5356B8A13D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC465A96-DAF9-4D0D-B080-9D5356B8A13D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC465A96-DAF9-4D0D-B080-9D5356B8A13D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

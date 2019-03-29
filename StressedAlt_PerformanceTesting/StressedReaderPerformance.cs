@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Text;
 using CSPlang;
-using CSPutil;
 using TestingUtilities;
 
 namespace StressedAlt_PerformanceTesting
@@ -50,8 +47,6 @@ namespace StressedAlt_PerformanceTesting
             Console.WriteLine("Waiting is over. Measuring time");
 
 
-            
-
             //perform read and measure the time
             t0 = CSTimer.CurrentTimeMillis();
             for (int i = 0; i < iterations; i++)
@@ -60,15 +55,18 @@ namespace StressedAlt_PerformanceTesting
                 stressedPacket = (StressedPacket) c[channelFairSelect].read();
                 n[channelFairSelect][stressedPacket.writer] = stressedPacket.n;
             }
+
             t1 = CSTimer.CurrentTimeMillis();
             microseconds = (t1 - t0) * 1000;
             if (microseconds > 0)
             {
                 Console.WriteLine("Reading time for " + iterations + " iterations: " + microseconds);
-                var newLine = string.Format("{0},{1},{2},{3},{4}", nChannels, nWritersPerChannel, nMessages, iterations, microseconds);
+                var newLine = string.Format("{0},{1},{2},{3},{4}", nChannels, nWritersPerChannel, nMessages, iterations,
+                    microseconds);
                 csv.AppendLine(newLine);
-                File.AppendAllText(@"d:\\stressedAlt_Test"+nChannels+"x"+nWritersPerChannel+".csv", csv.ToString());
-            }         
+                File.AppendAllText(@"d:\\stressedAlt_Test" + nChannels + "x" + nWritersPerChannel + ".csv",
+                    csv.ToString());
+            }
         }
     }
 }

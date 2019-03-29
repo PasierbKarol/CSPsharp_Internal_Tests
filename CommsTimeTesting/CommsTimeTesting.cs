@@ -17,14 +17,17 @@
 //                                                                  //
 //////////////////////////////////////////////////////////////////////
 
-using System;
-using CSPlang;
-using PlugAndPlay;
-using PlugAndPlay.Ints;
+
 
 /**
  * @author P.H. Welch
  */
+
+using System;
+using CSPlang;
+using PlugAndPlay;
+
+
 namespace CommsTimeTesting
 {
     public class CommsTimeTesting

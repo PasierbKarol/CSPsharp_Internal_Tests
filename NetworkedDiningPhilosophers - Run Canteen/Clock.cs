@@ -1,10 +1,4 @@
-using System;
 using CSPlang;
-using CSPlang.Any2;
-using CSPnet2.NetChannels;
-using CSPnet2.NetNode;
-using CSPnet2.TCPIP;
-
 
 namespace NetworkedDiningPhilosophers
 {
@@ -21,6 +15,7 @@ namespace NetworkedDiningPhilosophers
         {
             this.toConsole = toConsole;
         }
+
         public void run()
         {
             CSTimer tim = new CSTimer();

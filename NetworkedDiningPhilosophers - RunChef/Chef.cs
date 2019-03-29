@@ -1,9 +1,8 @@
 // copyright 2012-13 Jon Kerridge
 // Let's Do It In Parallel
 
-using System;
+
 using CSPlang;
-using CSPnet2;
 using CSPnet2.NetChannels;
 
 namespace RunChefForPhilosophersNetworking
@@ -35,5 +34,5 @@ namespace RunChefForPhilosophersNetworking
                 supply.write(0);
             }
         }
-    }    
+    }
 }

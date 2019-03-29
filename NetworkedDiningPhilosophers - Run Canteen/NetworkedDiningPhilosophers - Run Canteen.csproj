@@ -6,9 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CSPlang\CSPlang.csproj" />
-    <ProjectReference Include="..\CSPnet2\CSPnet2.csproj" />
-    <ProjectReference Include="..\PlugAndPlay\PlugAndPlay.csproj" />
+    <Reference Include="CSPlang">
+      <HintPath>..\CSPlang.dll</HintPath>
+    </Reference>
+    <Reference Include="CSPnet2">
+      <HintPath>..\CSPnet2.dll</HintPath>
+    </Reference>
+    <Reference Include="PlugAndPlay">
+      <HintPath>..\PlugAndPlay.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

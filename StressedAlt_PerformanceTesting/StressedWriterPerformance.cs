@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-using CSPlang;
+﻿using CSPlang;
 using TestingUtilities;
 
 namespace StressedAlt_PerformanceTesting
@@ -26,10 +22,10 @@ namespace StressedAlt_PerformanceTesting
         {
             StressedPacket stressedPacketA = new StressedPacket(writer);
             StressedPacket stressedPacketB = new StressedPacket(writer);
-                stressedPacketA.n = writerID;
-                Out.write(stressedPacketA);
-                stressedPacketB.n = writerID;
-                Out.write(stressedPacketB);
+            stressedPacketA.n = writerID;
+            Out.write(stressedPacketA);
+            stressedPacketB.n = writerID;
+            Out.write(stressedPacketB);
         }
     }
 }
